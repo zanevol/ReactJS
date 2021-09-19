@@ -1,4 +1,4 @@
-export const Message = ({question}) => {
-
-    return <span className="App-message">Message {question}</span>
-};
+export const Message = ({textUser, textAuthor}) => <div className="App-message">
+    <span className="App-message-user">{textUser}</span>
+    <span className="App-message-author">{textAuthor}</span>
+</div>;
