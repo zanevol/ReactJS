@@ -21,13 +21,13 @@ export const Profile = ({ theme }) => {
   };
   
   return (
-    <>
+    <div>
     
       <button onClick={theme?.changeTheme}>Toggle theme</button>
       
       <div>
         <span>Показать имя пользователя</span>
-        <input onClick={handleClick} type='checkbox'></input>
+          <input onClick={handleClick} type='checkbox'></input>
       </div>
       
       {showName && <div>Show name is true</div>}
@@ -36,7 +36,7 @@ export const Profile = ({ theme }) => {
         This is profile page
       </h3>
    
-    </>
+    </div>
   );
 };
 

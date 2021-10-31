@@ -5,8 +5,8 @@ import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { ChatList } from '../../ChatList/index';
-import Message from '../../message';
-import {Form} from '../../form';
+import Message from '../../Message';
+import {Form} from '../../Form';
 import { addMessageWithReply } from '../../../store/messages/actions';
 import { selectIfChatExist } from '../../../store/chats/selectors';
 
