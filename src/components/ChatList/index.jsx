@@ -1,30 +1,42 @@
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@material-ui/core"
 import { List } from "@material-ui/core"
 import { ChatItem } from '../ChatItem';
 import FormAddChat from '../FormAddChat';
-import { useDispatch, useSelector } from "react-redux";
-import { selectChats } from "../../store/chats/selectors";
-import { addChatFb } from "../../store/chats/actions";
+import { ref, set, onValue } from "firebase/database";
+import { db } from "../../services/firebase";
 
 
 export const ChatList = ({ onDeleteChat, onAddChat }) => {
 
-  const chats = useSelector(selectChats);
+  const [chats, setChats] = useState([]);
   const [value, setValue] = useState("");
-
-  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setValue(e.target.value);
   }
 
-  const handleAddChat = (e) => {
-    e.preventDefault(value);
+  useEffect(() => {
+    const userDbRef = ref(db, "chats");
+    onValue(userDbRef, (snapshot) => {
+      const data = snapshot.val();
+      setChats(Object.values(data || {}));
+    });
+  }, []);
 
-    dispatch(addChatFb(value))
+  const handleAddChat = (e) => {
+    e.preventDefault();
+
+    const newId = `chat-${Date.now()}`;
+    const chatsDbRef = ref(db, `chats/${newId}`);
+
+    set(chatsDbRef, {
+      id: newId,
+      name: value
+    });
 
     setValue("");
+
   }
 
   return (

@@ -1,14 +1,14 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
-import { Home } from "../Pages/Home";
+import {useEffect, useState} from "react";
+import {BrowserRouter, Switch, Route, Link} from "react-router-dom";
+import {Home} from "../Pages/Home";
 import Chats from "../Pages/Chats";
-import { ThemedProfile } from "../Pages/Profile";
-import { News } from "../Pages/News/index";
-import { PublicRoute } from "../Routes/PublicRoute";
-import { PrivateRoute } from "../Routes/PrivateRoute";
-import { onAuthStateChanged } from "@firebase/auth";
-import { signOut, signUp, auth, login } from "../../services/firebase";
+import {ThemedProfile} from "../Pages/Profile";
+import {News} from "../Pages/News/index";
+import {PublicRoute} from "../Routes/PublicRoute";
+import {PrivateRoute} from "../Routes/PrivateRoute";
+import {onAuthStateChanged} from "@firebase/auth";
+import {signOut, signUp, auth, login} from "../../services/firebase";
 
 
 export const Routes = () => {
